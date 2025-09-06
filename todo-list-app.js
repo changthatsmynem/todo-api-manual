@@ -38,8 +38,8 @@ app.put("/update/:id", (req, res) => {
   if (!todo) return res.status(404).json({ error: "Task not found" });
 
   const { task, status } = req.body;
-  todo.task = task;
-  todo.status = status;
+  if (task) todo.task = task;
+  if (status) todo.status = status;
 
   res.status(200).json({ message: "update success", todo});
 });
